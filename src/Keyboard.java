@@ -7,17 +7,13 @@ import java.nio.Buffer;
 import java.security.Key;
 
 public class Keyboard {
-    private final Robot robot;
+    private static  Robot robot = null;
 
 
     public  Keyboard() {
-        try {
-            this.robot = new Robot();
-        } catch (AWTException e) {
-            throw new RuntimeException(e);
-        }
     }
-    public void type(String toType) {
+    public static void type(String toType) {
+        setRobot();
         char[] word = toType.toCharArray();
         robot.delay(2000);
         for(int i = 0; i < word.length; i++){
@@ -354,17 +350,27 @@ public class Keyboard {
             }
         }
     }
-    public void toRun() {
+    public static void toRun() {
+        setRobot();
         robot.keyPress(KeyEvent.VK_WINDOWS);
         robot.keyPress(KeyEvent.VK_R);
         robot.keyRelease(KeyEvent.VK_R);
         robot.keyRelease(KeyEvent.VK_WINDOWS);
     }
-    public void pressEnter() {
+    public static void pressEnter() {
+        setRobot();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
-    private BufferedImage screenshot(Rectangle screen) {
+    private static BufferedImage screenshot(Rectangle screen) {
+        setRobot();
         return robot.createScreenCapture(screen);
+    }
+    private static void setRobot() {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
