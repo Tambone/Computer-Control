@@ -1,11 +1,7 @@
-import com.sun.corba.se.impl.orbutil.graph.Graph;
-
+package Computer;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
-import java.security.Key;
-
 public class Keyboard {
     private static  Robot robot = null;
 
@@ -362,7 +358,7 @@ public class Keyboard {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
-    private static BufferedImage screenshot(Rectangle screen) {
+    public static BufferedImage screenshot(Rectangle screen) {
         setRobot();
         return robot.createScreenCapture(screen);
     }

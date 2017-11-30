@@ -1,11 +1,12 @@
+package Computer;
 import java.awt.*;
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 public class Images {
-    File file;
-    String path;
-    BufferedImage image;
+    private File file;
+    private String path;
+    private BufferedImage image;
     private int numScreens = 0;
     private GraphicsDevice[] screens;
     private Rectangle[] bounds;
@@ -28,7 +29,7 @@ public class Images {
         return pixels;
     }
 
-    private void getNumScreens() {
+    private void setNumScreens() {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] screens = ge.getScreenDevices();
         numScreens = screens.length;
