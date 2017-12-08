@@ -26,8 +26,9 @@ public class Images {
         }
         return pixels;
     }
-    public static BufferedImage readURL(URL url) {
+    public static BufferedImage readURL(String link) {
         BufferedImage image = null;
+        URL url = new URL(link);
         try {
             image = ImageIO.read(url);
         } catch (IOException e) {
