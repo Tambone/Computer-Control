@@ -27,7 +27,7 @@ public class Images {
         }
         return pixels;
     }
-    public static BufferedImage readURL(String link) {
+    public static Image readURL(String link) {
         BufferedImage image = null;
 
         URL url = null;
