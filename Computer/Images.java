@@ -14,7 +14,7 @@ public class Images {
     private Rectangle[] bounds;
 
 
-    public static int[][][] readImage(BufferedImage image) {
+    public static int[][] readImage(BufferedImage image) {
 
         int pixelsX = image.getWidth();
         int pixelsY = image.getHeight();
