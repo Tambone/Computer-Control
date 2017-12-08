@@ -3,6 +3,8 @@ import java.awt.*;
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.net.URL;
+
 public class Images {
     private File file;
     private String path;
@@ -27,6 +29,15 @@ public class Images {
             }
         }
         return pixels;
+    }
+    public static Image readURL(URL url) {
+        Image image = null;
+        try {
+            image = ImageIO.read(url);
+        } catch (IOException e) {
+        }
+
+        return image;
     }
 
     private void setNumScreens() {
