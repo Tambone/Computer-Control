@@ -6,32 +6,28 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 
 public class Images {
-    private File file;
-    private String path;
-    private BufferedImage image;
+    private File file = null;
+    private String path = "";
+    private BufferedImage image = null;
     private int numScreens = 0;
     private GraphicsDevice[] screens;
     private Rectangle[] bounds;
-    public Images(String path) throws  IOException{
-        this.path = path;
-        file = new File(path);
-        image = ImageIO.read(file);
-    }
-    public int[] readImage() {
-        int pixelCount = 0;
+
+
+    public static int[][][] readImage(BufferedImage image) {
+
         int pixelsX = image.getWidth();
         int pixelsY = image.getHeight();
-        int[] pixels = new int[pixelsX * pixelsY];
+        int[][] pixels = new int[pixelsY][pixelsX];
         for(int yPos = image.getMinTileY(); yPos < pixelsY; yPos++) {
             for(int xPos = image.getMinTileX(); xPos < pixelsX; xPos++) {
-                pixels[pixelCount] = image.getRGB(xPos,yPos);
-                pixelCount++;
+                pixels[yPos][xPos] = image.getRGB(xPos,yPos);
             }
         }
         return pixels;
     }
-    public static Image readURL(URL url) {
-        Image image = null;
+    public static BufferedImage readURL(URL url) {
+        BufferedImage image = null;
         try {
             image = ImageIO.read(url);
         } catch (IOException e) {
